@@ -3,26 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP Tool Pro</title>
+    <title>TikTok Pro - Live</title>
     <style>
-        body { font-family: 'Arial', sans-serif; background-color: #f0f2f5; margin: 0; display: flex; flex-direction: column; align-items: center; }
-        header { background-color: #007bff; color: white; width: 100%; padding: 25px 0; text-align: center; font-size: 24px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .box { background: white; padding: 40px; margin-top: 50px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 85%; max-width: 450px; text-align: center; }
-        input { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; outline: none; }
-        input:focus { border-color: #007bff; }
-        button { background-color: #007bff; color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background-color: #0056b3; }
-        .footer { margin-top: 30px; color: #888; font-size: 12px; }
-    </style>
-</head>
-<body>
-    <header>ZEFOY STYLE TOOL</header>
-    <div class="box">
-        <h2 style="color: #333;">Paste Video Link</h2>
-        <input type="text" placeholder="https://www.example.com/...">
-        <button onclick="alert('Tool is connecting...')">SUBMIT</button>
-    </div>
-    <div class="footer">© 2026 My Tool - Created by Musa</div>
-</body>
-</html>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: black; font-family: sans-serif; overflow: hidden; }
+        .app-container { width: 100%; height: 100%; position: relative; display: flex; flex-direction: column; }
+        
+        /* Video Section */
+        .video-wrapper { flex: 1; position: relative; background: #000; display: flex; align-items: center; justify-content: center; }
+        video { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Side Buttons */
+        .side-bar { position: absolute; right: 10px; bottom: 100px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .icon { color: white; text-align: center; font-size: 12px; }
+        .icon-circle { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 5px; }
+
+        /* Bottom Navigation */
+        .nav-bar { height: 60px; background: black; border-top: 0.5px solid #333; display: flex; justify-content: space
+                  
 
