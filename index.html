@@ -3,21 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Pro - Live</title>
+    <title>TikTok Pro - VIP Tools</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: black; font-family: sans-serif; overflow: hidden; }
-        .app-container { width: 100%; height: 100%; position: relative; display: flex; flex-direction: column; }
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; text-align: center; }
+        header { background: #007bff; color: white; padding: 20px; font-size: 22px; font-weight: bold; }
+        .container { padding: 20px; max-width: 500px; margin: auto; }
         
-        /* Video Section */
-        .video-wrapper { flex: 1; position: relative; background: #000; display: flex; align-items: center; justify-content: center; }
-        video { width: 100%; height: 100%; object-fit: cover; }
+        /* Service Cards */
+        .card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-left: 5px solid #007bff; }
+        .card h3 { margin: 0 0 10px; color: #333; }
+        
+        /* Buttons */
+        .btn { background: #007bff; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; font-weight: bold; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
+        
+        /* Timer Text */
+        .timer-text { color: red; font-weight: bold; margin-top: 10px; display: none; }
+        
+        .footer { margin-top: 30px; font-size: 12px; color: #888; }
+    </style>
+</head>
+<body>
 
-        /* Side Buttons */
-        .side-bar { position: absolute; right: 10px; bottom: 100px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .icon { color: white; text-align: center; font-size: 12px; }
-        .icon-circle { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 5px; }
+<header>TIKTOK PRO - SERVICE PANEL</header>
 
-        /* Bottom Navigation */
-        .nav-bar { height: 60px; background: black; border-top: 0.5px solid #333; display: flex; justify-content: space
-                  
+<div class="container">
+    <p>Select a service to start (2-Minute Interval)</p>
+
+    <div class="card">
+        <h3>TikTok Followers</h3>
+        <button class="btn" onclick="startProcess('https://zefoy.com')">USE FOLLOWERS</button>
+        <div class="timer-text" id="timer1">Please wait: 120s</div>
+    </div>
+
+    <div class="card">
+        <h3>TikTok Hearts (Likes)</h3>
+        <button class="btn" onclick="startProcess('https://fireliker.com')">USE HEARTS</button>
+        <div class="timer-text" id="timer2">Please wait: 120s</div>
+    </div>
+
+    <div class="card">
+        <h3>TikTok Views</h3>
+        <button class="btn" onclick="startProcess('https://mytoolstown.com/tiktok/')">USE VIEWS</button>
+        <div class="timer-text" id="timer3">Please wait: 120s</div>
+    </div>
+</div>
+
+<div class="footer">© 2026 TikTok Pro Musa - VIP System</div>
+
+<script>
+    function startProcess(url) {
+        // Asli site ko naye tab mein kholna
+        window.open(url, '_blank');
+        
+        // Buttons ko disable karna aur timer chalana
+        const buttons = document.querySelectorAll('.btn');
+        const timers = document.querySelectorAll('.timer-text');
+        
+        buttons.forEach(btn => btn.disabled = true);
+        timers.forEach(t => t.style.display = 'block');
+
+        let timeLeft = 120;
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timers.forEach(t => t.innerText = "Next request in: " + timeLeft + "s");
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                buttons.forEach(btn => btn.disabled = false);
+                timers.forEach(t => t.style.display = 'none');
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
+
 
