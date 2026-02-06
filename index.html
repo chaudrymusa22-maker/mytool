@@ -32,19 +32,19 @@
 
     <div class="card">
         <h3>TikTok Followers</h3>
-        <button class="btn" onclick="startProcess('https://zefoy.com')">USE FOLLOWERS</button>
+        <button class="btn" onclick="startBoost('Followers')">USE FOLLOWERS</button>
         <div class="timer-text" id="timer1">Please wait: 120s</div>
     </div>
 
     <div class="card">
         <h3>TikTok Hearts (Likes)</h3>
-        <button class="btn" onclick="startProcess('https://fireliker.com')">USE HEARTS</button>
+        <button class="btn" onclick="startBoost('Hearts')">USE HEARTS</button>
         <div class="timer-text" id="timer2">Please wait: 120s</div>
     </div>
 
     <div class="card">
         <h3>TikTok Views</h3>
-        <button class="btn" onclick="startProcess('https://mytoolstown.com/tiktok/')">USE VIEWS</button>
+        <button class="btn" onclick="startBoost('Views')">USE VIEWS</button>
         <div class="timer-text" id="timer3">Please wait: 120s</div>
     </div>
 </div>
@@ -81,3 +81,29 @@
 </html>
 
 
+<script>
+async function startBoost(serviceType) {
+    const videoUrl = prompt("Enter TikTok Video Link for " + serviceType + ":");
+    
+    if (!videoUrl || videoUrl.trim() === "") {
+        alert("Link enter karna zaroori hai!");
+        return;
+    }
+
+    // Ye aapka Replit Backend URL hai
+    const backendUrl = "https://flask-api--chaudrymusa22.replit.app/boost";
+
+    try {
+        const response = await fetch(backendUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: videoUrl, service: serviceType })
+        });
+        
+        const data = await response.json();
+        alert("Musa Server: " + data.message);
+    } catch (error) {
+        alert("Connection Error! Replit par 'Run' button check karein.");
+    }
+}
+</script>
