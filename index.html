@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Pro - VIP Tools</title>
+    <title>TikTok Pro - 5 in 1 Tool</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; padding: 20px; }
         header { background: #007bff; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
         .card { background: white; padding: 20px; margin: 10px auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 400px; }
         button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px; }
         button:hover { background: #0056b3; }
-        .extra-btns { display: flex; gap: 10px; max-width: 400px; margin: 20px auto; }
-        .fav-btn { background: #ffcc00; color: black; }
-        .share-btn { background: #25d366; color: white; }
     </style>
 </head>
 <body>
@@ -37,18 +34,21 @@
     <button onclick="startBoost('Views')">USE VIEWS</button>
 </div>
 
-<div class="extra-btns">
-    <button class="fav-btn" onclick="addToFavorites()">⭐ Add Favorite</button>
-    <button class="share-btn" onclick="shareWebsite()">🔗 Share Tool</button>
+<div class="card">
+    <h3>TikTok Shares</h3>
+    <button onclick="startBoost('Shares')">USE SHARES</button>
+</div>
+
+<div class="card">
+    <h3>TikTok Favorites</h3>
+    <button onclick="startBoost('Favorites')">USE FAVORITES</button>
 </div>
 
 <script>
-// Aapka Published Replit Link
 const backendUrl = "https://boost-service--muhammadali3036.replit.app/boost";
 
 async function startBoost(serviceType) {
-    const videoUrl = prompt("Enter TikTok Video Link for " + serviceType + ":");
-    
+    const videoUrl = prompt("Enter TikTok Link for " + serviceType + ":");
     if (!videoUrl || videoUrl.trim() === "") {
         alert("Link enter karna zaroori hai!");
         return;
@@ -60,28 +60,9 @@ async function startBoost(serviceType) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url: videoUrl, service: serviceType })
         });
-        
-        // Agar response sahi hai toh ye message aayega
-        alert("Order Received! Aapka boost shuru ho gaya hai.");
+        alert("Order Received for " + serviceType + "! Kaam shuru ho gaya.");
     } catch (error) {
-        // Agar Replit off hua ya link galat hua toh ye aayega
         alert("Connection Error! Replit par 'Run' check karein.");
-    }
-}
-
-function addToFavorites() {
-    alert("Bookmark karne ke liye Browser menu mein 'Star' (⭐) icon dabayein!");
-}
-
-function shareWebsite() {
-    if (navigator.share) {
-        navigator.share({
-            title: 'TikTok Pro Tool',
-            text: 'Check out this amazing TikTok Boost tool!',
-            url: window.location.href
-        });
-    } else {
-        alert("Link copy karke doston ko bhejein: " + window.location.href);
     }
 }
 </script>
@@ -89,4 +70,4 @@ function shareWebsite() {
 </body>
 </html>
 
-
+    
