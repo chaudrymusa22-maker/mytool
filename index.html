@@ -1,49 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Pro - 5 in 1 Tool</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; padding: 20px; }
-        header { background: #007bff; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
-        .card { background: white; padding: 20px; margin: 10px auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 400px; }
-        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px; }
-        button:hover { background: #0056b3; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>TIKTOK PRO - SERVICE PANEL</h1>
-    <p>Select a service to start (2-Minute Interval)</p>
-</header>
-
-<div class="card">
-    <h3>TikTok Followers</h3>
-    <button onclick="startBoost('Followers')">USE FOLLOWERS</button>
-</div>
-
-<div class="card">
-    <h3>TikTok Hearts (Likes)</h3>
-    <button onclick="startBoost('Hearts')">USE HEARTS</button>
-</div>
-
-<div class="card">
-    <h3>TikTok Views</h3>
-    <button onclick="startBoost('Views')">USE VIEWS</button>
-</div>
-
-<div class="card">
-    <h3>TikTok Shares</h3>
-    <button onclick="startBoost('Shares')">USE SHARES</button>
-</div>
-
-<div class="card">
-    <h3>TikTok Favorites</h3>
-    <button onclick="startBoost('Favorites')">USE FAVORITES</button>
-</div>
-
 <script>
 const backendUrl = "https://boost-service-muhammadali3036.replit.app/boost";
 
@@ -60,14 +14,15 @@ async function startBoost(serviceType) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url: videoUrl, service: serviceType })
         });
-        alert("Order Received for " + serviceType + "! Kaam shuru ho gaya.");
+
+        if (response.ok) {
+            alert("Order Received! Apka " + serviceType + " ka kaam start ho jayega.");
+        } else {
+            alert("Server error! Replit check karein.");
+        }
     } catch (error) {
         alert("Connection Error! Replit par 'Run' check karein.");
     }
 }
 </script>
 
-</body>
-</html>
-
-    
