@@ -5,83 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok Pro - VIP Tools</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; text-align: center; }
-        header { background: #007bff; color: white; padding: 20px; font-size: 22px; font-weight: bold; }
-        .container { padding: 20px; max-width: 500px; margin: auto; }
-        
-        /* Service Cards */
-        .card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-left: 5px solid #007bff; }
-        .card h3 { margin: 0 0 10px; color: #333; }
-        
-        /* Buttons */
-        .btn { background: #007bff; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; font-weight: bold; }
-        .btn:disabled { background: #ccc; cursor: not-allowed; }
-        
-        /* Timer Text */
-        .timer-text { color: red; font-weight: bold; margin-top: 10px; display: none; }
-        
-        .footer { margin-top: 30px; font-size: 12px; color: #888; }
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; padding: 20px; }
+        header { background: #007bff; color: white; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+        .card { background: white; padding: 20px; margin: 10px auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 400px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px; }
+        button:hover { background: #0056b3; }
+        .extra-btns { display: flex; gap: 10px; max-width: 400px; margin: 20px auto; }
+        .fav-btn { background: #ffcc00; color: black; }
+        .share-btn { background: #25d366; color: white; }
     </style>
 </head>
 <body>
 
-<header>TIKTOK PRO - SERVICE PANEL</header>
-
-<div class="container">
+<header>
+    <h1>TIKTOK PRO - SERVICE PANEL</h1>
     <p>Select a service to start (2-Minute Interval)</p>
+</header>
 
-    <div class="card">
-        <h3>TikTok Followers</h3>
-        <button class="btn" onclick="startBoost('Followers')">USE FOLLOWERS</button>
-        <div class="timer-text" id="timer1">Please wait: 120s</div>
-    </div>
-
-    <div class="card">
-        <h3>TikTok Hearts (Likes)</h3>
-        <button class="btn" onclick="startBoost('Hearts')">USE HEARTS</button>
-        <div class="timer-text" id="timer2">Please wait: 120s</div>
-    </div>
-
-    <div class="card">
-        <h3>TikTok Views</h3>
-        <button class="btn" onclick="startBoost('Views')">USE VIEWS</button>
-        <div class="timer-text" id="timer3">Please wait: 120s</div>
-    </div>
+<div class="card">
+    <h3>TikTok Followers</h3>
+    <button onclick="startBoost('Followers')">USE FOLLOWERS</button>
 </div>
 
-<div class="footer">© 2026 TikTok Pro MeharHanan - VIP System</div>
+<div class="card">
+    <h3>TikTok Hearts (Likes)</h3>
+    <button onclick="startBoost('Hearts')">USE HEARTS</button>
+</div>
+
+<div class="card">
+    <h3>TikTok Views</h3>
+    <button onclick="startBoost('Views')">USE VIEWS</button>
+</div>
+
+<div class="extra-btns">
+    <button class="fav-btn" onclick="addToFavorites()">⭐ Add Favorite</button>
+    <button class="share-btn" onclick="shareWebsite()">🔗 Share Tool</button>
+</div>
 
 <script>
-    function startProcess(url) {
-        // Asli site ko naye tab mein kholna
-        window.open(url, '_blank');
-        
-        // Buttons ko disable karna aur timer chalana
-        const buttons = document.querySelectorAll('.btn');
-        const timers = document.querySelectorAll('.timer-text');
-        
-        buttons.forEach(btn => btn.disabled = true);
-        timers.forEach(t => t.style.display = 'block');
+// Aapka Published Replit Link
+const backendUrl = "https://boost-service--muhammadali3036.replit.app/boost";
 
-        let timeLeft = 120;
-        const countdown = setInterval(() => {
-            timeLeft--;
-            timers.forEach(t => t.innerText = "Next request in: " + timeLeft + "s");
-
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                buttons.forEach(btn => btn.disabled = false);
-                timers.forEach(t => t.style.display = 'none');
-            }
-        }, 1000);
-    }
-</script>
-
-</body>
-</html>
-
-
-<script>
 async function startBoost(serviceType) {
     const videoUrl = prompt("Enter TikTok Video Link for " + serviceType + ":");
     
@@ -90,9 +54,6 @@ async function startBoost(serviceType) {
         return;
     }
 
-    // Ye aapka Replit Backend URL hai
-    const backendUrl = "https://boost-service--muhammadali3036.replit.app/boost";
-
     try {
         const response = await fetch(backendUrl, {
             method: 'POST',
@@ -100,10 +61,32 @@ async function startBoost(serviceType) {
             body: JSON.stringify({ url: videoUrl, service: serviceType })
         });
         
-        const data = await response.json();
-        alert("Meharhanan Server: " + data.message);
+        // Agar response sahi hai toh ye message aayega
+        alert("Order Received! Aapka boost shuru ho gaya hai.");
     } catch (error) {
-        alert("Connection Error! Replit par 'Run' button check karein.");
+        // Agar Replit off hua ya link galat hua toh ye aayega
+        alert("Connection Error! Replit par 'Run' check karein.");
+    }
+}
+
+function addToFavorites() {
+    alert("Bookmark karne ke liye Browser menu mein 'Star' (⭐) icon dabayein!");
+}
+
+function shareWebsite() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'TikTok Pro Tool',
+            text: 'Check out this amazing TikTok Boost tool!',
+            url: window.location.href
+        });
+    } else {
+        alert("Link copy karke doston ko bhejein: " + window.location.href);
     }
 }
 </script>
+
+</body>
+</html>
+
+
